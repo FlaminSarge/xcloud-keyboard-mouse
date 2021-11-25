@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "alwaysStrict": true,
+        "forceConsistentCasingInFileNames": true,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "strictFunctionTypes": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "module": "commonjs",
+        "target": "es6",
+        "esModuleInterop": true,
+        "sourceMap": false,
+        "rootDir": "src",
+        "outDir": "dist/js",
+        "noEmitOnError": true,
+        "jsx": "react",
+        "typeRoots": [ "node_modules/@types" ]
+    }
+}

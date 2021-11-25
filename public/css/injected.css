@@ -1,0 +1,108 @@
+#snackbar-xmc {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  visibility: hidden;
+  background-color: #333;
+  border: 2px solid #fff;
+  color: #fff;
+  fill: #fff;
+  text-align: center;
+  border-radius: 8px;
+  padding: 10px 16px;
+  position: fixed;
+  z-index: 150;
+  bottom: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+#snackbar-xmc img {
+  fill: #fff;
+  width: 2em;
+  height: 2em;
+  margin-right: 16px;
+}
+
+/* Show the snackbar when clicking on a button (class added with JavaScript) */
+#snackbar-xmc.show {
+  visibility: visible;
+  /* Show the snackbar */
+  /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
+  However, delay the fade out process for 2.5 seconds */
+  -webkit-animation: fadein-xmc 0.5s, fadeout-xmc 0.5s 2.5s;
+  animation: fadein-xmc 0.5s, fadeout-xmc 0.5s 2.5s;
+}
+
+#click-to-enable-mouse-xmc {
+  cursor: pointer;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 400px;
+  min-height: 180px;
+  background-color: rgba(30, 30, 30, 0.7);
+  color: #fff;
+  fill: #fff;
+  font-size: 3em;
+  font-weight: bold;
+  text-align: center;
+  border-radius: 16px;
+  padding: 22px;
+  position: fixed;
+  z-index: 150;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Animations to fade the snackbar in and out */
+@-webkit-keyframes fadein-xmc {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadein-xmc {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 30px;
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeout-xmc {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes fadeout-xmc {
+  from {
+    bottom: 30px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
