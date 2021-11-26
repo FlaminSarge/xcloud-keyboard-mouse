@@ -18,12 +18,12 @@ function postMessageToWindow(msg: any) {
 }
 
 function handleDisableGamepad() {
+  // Disable the fake gamepad and let them use their real gamepad
+  // User may likely just need to refresh the page as well in this case...
   console.log('handleDisableGamepad');
   showToast('Mouse/keyboard disabled');
   destroy();
   resetGamepadGlobals();
-  // User may likely just need to refresh the page as well in this case...
-  // - show them a message in the DOM?
 }
 
 function handleGamepadConfigUpdate(name: string, config: GamepadConfig) {
@@ -62,26 +62,26 @@ function connectToExtension(gameName?: string) {
   });
 }
 
+function getGameNameFromXboxPage() {
+  let gameName = undefined;
+  const titleSplit = document.title.split(/\s+\|/);
+  if (titleSplit.length === 2) {
+    gameName = titleSplit[0];
+  }
+  return gameName;
+}
+
 function initializeIfReady() {
-  const h1 = document.querySelector('h1'); // Only on sign in page or other pages
+  // Headings only shown when there are errors or need sign in
+  const h1 = document.querySelector('h1');
+  const streamDiv = document.getElementById('game-stream');
   const isXbox = window.location.href.indexOf('xbox.com') !== -1;
   // e.g. "Halo Infinite | Xbox Cloud Gaming (Beta) on Xbox.com"
-  const gameName = isXbox ? document.title.split(/\s+\|/)[0] : undefined;
+  const gameName = isXbox ? getGameNameFromXboxPage() : undefined;
 
-  // TODO NOT WORKING!
-  // Prematurely hitting false positive in xbox case
-  if (!isXbox || !h1) {
+  if (!isXbox || (!h1 && streamDiv)) {
     simulateGamepadConnect();
     connectToExtension(gameName);
-
-    // Prevent xCloud's unfocus listeners from triggering
-    // TODO do we need this?
-    win.addEventListener('focusout', (event) => {
-      event.stopImmediatePropagation();
-    });
-    win.addEventListener('blur', (event) => {
-      event.stopImmediatePropagation();
-    });
     return true;
   }
   return false;
@@ -98,5 +98,8 @@ function onLoad() {
   }, 1000);
 }
 
+// We need to use 'pageshow' here instead of 'load' because the 'load' event
+// doesn't always trigger if the page is cached (e.g. pressing the back button)
 win.addEventListener('pageshow', onLoad, false);
-win.addEventListener('popstate', onLoad, false);
+// Not sure yet if this is needed:
+// win.addEventListener('popstate', onLoad, false);
