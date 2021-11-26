@@ -1,6 +1,7 @@
 # Xbox Cloud Gaming (xCloud) Keyboard & Mouse Chrome Extension
 
-![build](https://github.com/chibat/chrome-extension-typescript-starter/workflows/build/badge.svg)
+[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/idolize/xcloud-keyboard-mouse/blob/master/README.md)
+[![CI Status](https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml/badge.svg?event=push&branch=master)](https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml)
 
 No controller? No problem!
 
