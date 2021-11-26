@@ -85,11 +85,20 @@ export function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITI
   document.addEventListener('pointerlockerror', mouseLockError);
   listeners.clickElement = createClickElement();
   parentElement.appendChild(listeners.clickElement);
-  listeners.clickElement.addEventListener('click', function onClick() {
+  listeners.clickElement.addEventListener('mousedown', function onClick(e) {
+    // Note: make sure the game stream is still in focus or the game will pause input!
+    e.preventDefault(); // prevent bluring when clicked
     const req: any = parentElement.requestPointerLock();
+    // This shouldn't be needed now with above preventDefault, but just to be safe...
+    const doFocus = () => {
+      const streamDiv = document.getElementById('game-stream');
+      streamDiv?.focus();
+    };
     if (req) {
       // Chrome returns a Promise here
-      req.catch(mouseLockError);
+      req.then(doFocus).catch(mouseLockError);
+    } else {
+      doFocus();
     }
   });
 }
@@ -165,9 +174,7 @@ export function unlistenKeyboard() {
 
 export function unlistenMouseMove() {
   document.exitPointerLock();
-  if (listeners.clickElement) {
-    listeners.clickElement.remove();
-  }
+  listeners.clickElement?.remove();
 }
 
 export function unlistenAll() {
