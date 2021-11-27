@@ -33,7 +33,6 @@ const mouseLockError = () => {
 };
 
 function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
-  console.log('Listening to mouse', axe);
   let stopMovingTimer: any;
   let needRaf = true; // used for requestAnimationFrame to only trigger at 60fps
   let movementX = 0;
@@ -105,7 +104,6 @@ function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
 }
 
 function listenKeyboard(codeMapping: Record<string, CodeMap>) {
-  console.log('Listening to keyboard');
   const handleKeyEvent = (
     code: string,
     buttonFn: (index: number) => void,

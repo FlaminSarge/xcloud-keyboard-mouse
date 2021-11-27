@@ -18,20 +18,17 @@ function postMessageToWindow(msg: any) {
 
 function handleDisableGamepad() {
   // Disable the fake gamepad and let them use their real gamepad
-  console.log('handleDisableGamepad');
   showToast('Mouse/keyboard disabled');
   disableConfig();
 }
 
 function handleGamepadConfigUpdate(name: string, config: GamepadConfig) {
-  const { mouseConfig, keyConfig } = config;
-  console.log('handleGamepadConfigUpdate', name, mouseConfig, keyConfig);
   showToast(`'${name}' preset activated`);
   enableConfig(config);
 }
 
 function connectToExtension(gameName: string | null) {
-  console.log('setting up connection to content script via postMessage');
+  // Setting up connection to content script via postMessage
   postMessageToWindow(intializedMsg(gameName));
 
   window.addEventListener('message', (event) => {
@@ -40,8 +37,7 @@ function connectToExtension(gameName: string | null) {
       return;
     }
     const msg: Message = event.data;
-    console.log('GOT MESSAGE FROM EXTENSION!', msg);
-    // enable configuration
+    // Got message from extension
     if (msg.type === MessageTypes.ACTIVATE_GAMEPAD_CONFIG) {
       handleGamepadConfigUpdate(msg.name, msg.gamepadConfig);
     } else if (msg.type === MessageTypes.DISABLE_GAMEPAD) {

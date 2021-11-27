@@ -49,10 +49,8 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
 
   const handleClickAdd = useCallback(() => {
     if (readOnly) return;
-    console.log('Listening.....');
     setIsListening(true);
     keyListener.current = function onKeyDown(e: KeyboardEvent) {
-      console.log('GOT KEYDOWN!!');
       e.preventDefault();
       const { code } = e;
       if (code !== 'Escape' && codes.indexOf(code) === -1) {

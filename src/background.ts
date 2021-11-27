@@ -17,15 +17,14 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
   }
 });
 
-console.log('Listening...');
 chrome.runtime.onMessage.addListener((msg: Message, sender, sendResponse) => {
   // Receives messages from the content_script
   if (!sender.tab) return false;
-  console.log('Connected external');
+  console.log('Connected');
   if (msg.type === MessageTypes.INITIALIZED) {
     chrome.action.enable(sender.tab.id!);
     updateGameName(msg.gameName);
-    console.log('sending config back');
+    console.log('Initialized');
     // Send any currently-active config
     getAllStoredSync().then(({ activeConfig, configs }) => {
       const config = !activeConfig ? null : configs[activeConfig];
@@ -38,7 +37,6 @@ chrome.runtime.onMessage.addListener((msg: Message, sender, sendResponse) => {
 
 // Listen for any internal messages (e.g. from popup) and proxy to the content_script.
 chrome.runtime.onConnect.addListener((port) => {
-  console.log('Connected internal');
   port.onMessage.addListener(async (msg: Message) => {
     // Does this need 'activeTab' permission? Doesn't seem like it
     const tabs = await chrome.tabs.query({ active: true, currentWindow: true });
