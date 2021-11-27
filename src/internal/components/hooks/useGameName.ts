@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { fetchGameNameAction } from '../state/actions';
-import { getGameName } from '../state/selectors';
+import { fetchGameNameAction } from '../../state/actions';
+import { getGameName } from '../../state/selectors';
 import { useAppDispatch, useAppSelector } from './reduxHooks';
 
 export default function useGameName() {

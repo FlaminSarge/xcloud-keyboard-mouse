@@ -3,11 +3,11 @@ import React, { FormEventHandler, memo, useCallback, useEffect, useState } from 
 import { DEFAULT_CONFIG_NAME, emptyGamepadConfig } from '../../shared/gamepadConfig';
 import { GamepadConfig, KeyMap, StickNum } from '../../shared/types';
 import { getGamepadConfig, isConfigActive } from '../state/selectors';
-import { useAppSelector } from './reduxHooks';
+import { useAppSelector } from './hooks/reduxHooks';
 import SensitivitySelector from './SensitivitySelector';
 import StickSelector from './StickSelector';
 import KeybindingsForButton from './KeybindingsForButton';
-import useKeyConfigEditorState from './useKeyConfigEditorState';
+import useKeyConfigEditorState from './hooks/useKeyConfigEditorState';
 
 interface SensitivityEditorProps {
   name: string;
@@ -105,6 +105,7 @@ function GamepadConfigEditor({ name, onSubmitChanges, onCancelCreate, onActivate
               return (
                 <KeybindingsForButton
                   key={button.toString()}
+                  useSpacers
                   button={button}
                   readOnly={!isEditing}
                   value={val}

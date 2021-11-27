@@ -5,8 +5,8 @@ import {
   MouseConfigErrors,
   processGamepadConfig,
   validateMouseConfig,
-} from '../../shared/gamepadConfig';
-import { GamepadConfig, GamepadMouseConfig, KeyMap } from '../../shared/types';
+} from '../../../shared/gamepadConfig';
+import { GamepadConfig, GamepadMouseConfig, KeyMap } from '../../../shared/types';
 
 export interface EditorState {
   config: GamepadConfig;

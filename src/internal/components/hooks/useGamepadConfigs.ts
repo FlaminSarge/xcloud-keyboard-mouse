@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { fetchAllAction } from '../state/actions';
-import { getActiveConfigName, getAllGamepadConfigs } from '../state/selectors';
+import { fetchAllAction } from '../../state/actions';
+import { getActiveConfigName, getAllGamepadConfigs } from '../../state/selectors';
 import { useAppDispatch, useAppSelector } from './reduxHooks';
 
 export default function useGamepadConfigs() {

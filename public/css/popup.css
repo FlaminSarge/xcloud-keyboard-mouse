@@ -7,9 +7,13 @@ html, body {
 }
 
 .popup {
-  min-width: 450px;
+  width: 500px;
   height: 600px;
   display: flex;
+}
+
+.no-margin {
+  margin: 0;
 }
 
 .no-pointer-events {
@@ -36,6 +40,14 @@ html, body {
 
 .margin-bottom {
   margin-bottom: 12px;
+}
+
+.margin-left {
+  margin-left: 12px;
+}
+
+.margin-right {
+  margin-right: 12px;
 }
 
 .margin-right-s {
@@ -77,12 +89,7 @@ html, body {
 }
 
 .logo {
-  font-size: 2em;
-}
-
-.logo img {
-  width: 1em;
-  height: 1em;
+  font-size: 24px;
 }
 
 .setup-details {
@@ -124,6 +131,11 @@ html, body {
   align-items: center;
 }
 
+.left-aligned {
+  text-align: left;
+  align-items: flex-start;
+}
+
 .space-between {
   justify-content: space-between;
 }
@@ -160,6 +172,10 @@ html, body {
 
 .unselectable {
   user-select: none;
+}
+
+.config-selector {
+  min-height: 40px;
 }
 
 .config-editor {

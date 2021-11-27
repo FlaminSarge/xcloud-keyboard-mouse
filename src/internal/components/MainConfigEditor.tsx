@@ -4,7 +4,7 @@ import { GamepadConfig } from '../../shared/types';
 import { DEFAULT_CONFIG_NAME } from '../../shared/gamepadConfig';
 import GamepadConfigEditor from './GamepadConfigEditor';
 import GamepadConfigSelector from './GamepadConfigSelector';
-import { useAppDispatch } from './reduxHooks';
+import { useAppDispatch } from './hooks/reduxHooks';
 import { deleteGamepadConfigAction, modifyGamepadConfigAction, activateGamepadConfigAction } from '../state/actions';
 import { PendingReadStatus } from '../state/reducers';
 

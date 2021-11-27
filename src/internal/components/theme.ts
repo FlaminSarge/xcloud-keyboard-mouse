@@ -1,10 +1,10 @@
-import { PartialTheme } from '@fluentui/react';
+import { PartialTheme, ITheme, createTheme } from '@fluentui/react';
 
 export const xboxColor = '#38a11b';
 
 // https://github.com/microsoft/fluentui/wiki/How-to-apply-theme-to-Fluent-UI-React-components
 // https://fluentuipr.z22.web.core.windows.net/heads/master/theming-designer/index.html
-export const fluentXboxTheme: PartialTheme = {
+export const fluentXboxTheme: ITheme = createTheme({
   palette: {
     themePrimary: '#218f35',
     themeLighterAlt: '#f3fbf4',
@@ -29,31 +29,41 @@ export const fluentXboxTheme: PartialTheme = {
     black: '#494847',
     white: '#f3f2f1',
   },
-};
+});
 
-// export const fluentDarkTheme: PartialTheme = {
-//   palette: {
-//     themePrimary: '#399e51',
-//     themeLighterAlt: '#020603',
-//     themeLighter: '#09190d',
-//     themeLight: '#112f18',
-//     themeTertiary: '#225f30',
-//     themeSecondary: '#328b47',
-//     themeDarkAlt: '#47a85e',
-//     themeDark: '#5db572',
-//     themeDarker: '#81c992',
-//     neutralLighterAlt: '#262626',
-//     neutralLighter: '#2f2f2f',
-//     neutralLight: '#3d3d3d',
-//     neutralQuaternaryAlt: '#464646',
-//     neutralQuaternary: '#4d4d4d',
-//     neutralTertiaryAlt: '#6b6b6b',
-//     neutralTertiary: '#c8c8c8',
-//     neutralSecondary: '#d0d0d0',
-//     neutralPrimaryAlt: '#dadada',
-//     neutralPrimary: '#ffffff',
-//     neutralDark: '#f4f4f4',
-//     black: '#f8f8f8',
-//     white: '#1c1c1c',
-//   },
-// };
+export const fluentXboxHeaderTheme: PartialTheme = {
+  palette: {
+    themePrimary: '#00260e',
+    themeLighterAlt: '#000502',
+    themeLighter: '#000903',
+    themeLight: '#000d05',
+    themeTertiary: '#001106',
+    themeSecondary: '#001508',
+    themeDarkAlt: '#001a09',
+    themeDark: '#001e0b',
+    themeDarker: '#00220c',
+    neutralLighterAlt: '#208b34',
+    neutralLighter: '#1f8933',
+    neutralLight: '#1e8331',
+    neutralQuaternaryAlt: '#1c7a2d',
+    neutralQuaternary: '#1b752b',
+    neutralTertiaryAlt: '#1a702a',
+    neutralTertiary: '#c8c8c8',
+    neutralSecondary: '#d0d0d0',
+    neutralPrimaryAlt: '#dadada',
+    neutralPrimary: '#ffffff',
+    neutralDark: '#f4f4f4',
+    black: '#f8f8f8',
+    white: '#218f35',
+  },
+  semanticColors: {
+    menuBackground: fluentXboxTheme.semanticColors.menuBackground,
+    menuDivider: fluentXboxTheme.semanticColors.menuDivider,
+    menuItemText: fluentXboxTheme.semanticColors.menuItemText,
+    menuItemTextHovered: fluentXboxTheme.semanticColors.menuItemTextHovered,
+    menuItemBackgroundHovered: fluentXboxTheme.semanticColors.menuItemBackgroundHovered,
+    menuItemBackgroundPressed: fluentXboxTheme.semanticColors.menuItemBackgroundPressed,
+    menuIcon: fluentXboxTheme.semanticColors.menuIcon,
+    menuHeader: fluentXboxTheme.semanticColors.menuHeader,
+  },
+};

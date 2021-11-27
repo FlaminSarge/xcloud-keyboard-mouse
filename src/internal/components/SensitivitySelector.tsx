@@ -1,7 +1,7 @@
 import React, { useCallback, Dispatch, SyntheticEvent } from 'react';
 import { SpinButton, Position } from '@fluentui/react';
 import classnames from 'classnames';
-import { EditorAction } from './useKeyConfigEditorState';
+import { EditorAction } from './hooks/useKeyConfigEditorState';
 
 interface SensitivitySelectorProps {
   dispatch: Dispatch<EditorAction>;
