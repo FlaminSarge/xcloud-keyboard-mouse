@@ -23,12 +23,9 @@
   All Microsoft, Xbox logos/icons/trademarks are copyright of their respective owners.</sub>
 </p>
 
-*No controller? No problem!*
+***No controller? No problem!***
 
 Use a keyboard and mouse with [Xbox Cloud Gaming (Project xCloud)](https://xbox.com/play) in your browser.
-
-This is a fan project - it is not affiliated with Microsoft or Xbox in any way.
-All Microsoft, Xbox logos/icons/trademarks are copyright of their respective owners.
 
 ## The issue with xCloud
 
@@ -42,9 +39,7 @@ Or at least you *were*...
 
 ## Features
 
-<img src = "docs/assets/extension_screenshot1.png" /> <img src="docs/assets/extension_screenshot2.png" />
-![Screenshot of viewing](docs/assets/extension_screenshot1.png)
-![Screenshot of editing]()
+<img src = "docs/assets/extension_screenshot1.png" width="400" alt="Screenshot" /> <img src="docs/assets/extension_screenshot2.png" width="400" alt="Screenshot of editing" />
 
 #### Multiple presets
 
