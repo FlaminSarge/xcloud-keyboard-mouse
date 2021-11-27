@@ -29,7 +29,7 @@ Use a keyboard and mouse with [Xbox Cloud Gaming (Project xCloud)](https://xbox.
 
 ## The issue with xCloud
 
-Microsoft's cloud gaming service [Xbox Cloud Gaming (aka Project xCloud)](https://xbox.com/play) lets you play your favorite Xbox games in the cloud, but it runs on phsyical Xbox consoles (not PCs) behind the scenes.
+Microsoft's cloud gaming service [Xbox Cloud Gaming (aka Project xCloud)](https://xbox.com/play) lets you play your favorite Xbox games in the cloud, but it runs on phsyical Xbox **consoles** (not PCs) behind the scenes.
 
 Since very few games on Xbox consoles support mouse and keyboard as first-class input devices, Microsoft chose to limit xCloud users to only using gamepad controllers to play (although [maybe they will add PC servers eventually](https://twitter.com/XboxP3/status/1384154390630592521), but I wouldn't hold my breath).
 
@@ -40,6 +40,10 @@ Or at least you *were*...
 ## Features
 
 <img src = "docs/assets/extension_screenshot1.png" width="400" alt="Screenshot" /> <img src="docs/assets/extension_screenshot2.png" width="400" alt="Screenshot of editing" />
+
+### ✅ Works for every game
+
+- Every game on xCloud is supported - regardless of whether or not it natively supports mouse and keyboard
 
 ### ✅ Multiple presets
 
