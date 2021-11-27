@@ -1,7 +1,7 @@
-// Inspired by https://github.com/alvaromontoro/gamepad-simulator
 import { Direction } from '../shared/types';
 
-const origGetGamepads = navigator.getGamepads;
+let useFakeController = false;
+const origGetGamepads = navigator.getGamepads.bind(navigator);
 
 export const fakeController = {
   axes: [0, 0, 0, 0],
@@ -155,25 +155,21 @@ export function simulateGamepadDisconnect() {
 
 const gamepadSimulator = {
   fakeController,
-  modifyGamepadGlobals,
-  resetGamepadGlobals,
 };
 
-type GamepadSimulator = typeof gamepadSimulator;
-
-export interface CustomWindow extends Window {
-  gamepadSimulator: GamepadSimulator;
-}
-
-export function modifyGamepadGlobals(): CustomWindow {
+export function modifyGamepadGlobals() {
+  if ((window as any).gamepadSimulator) return;
   (window as any).gamepadSimulator = gamepadSimulator;
   navigator.getGamepads = function getGamepads() {
-    return [fakeController];
+    return useFakeController ? [fakeController] : origGetGamepads();
   };
-  return window as unknown as CustomWindow;
 }
 
-export function resetGamepadGlobals(): Window {
+export function enableSimulator(enable: boolean) {
+  useFakeController = enable;
+}
+
+export function resetGamepadGlobals() {
+  (window as any).gamepadSimulator = null;
   navigator.getGamepads = origGetGamepads;
-  return window;
 }

@@ -12,7 +12,7 @@ export type Message =
   | ReturnType<typeof activateGamepadConfigMsg>
   | ReturnType<typeof disableGamepadMsg>;
 
-export function intializedMsg(gameName?: string) {
+export function intializedMsg(gameName: string | null) {
   return { type: MessageTypes.INITIALIZED as const, gameName };
 }
 

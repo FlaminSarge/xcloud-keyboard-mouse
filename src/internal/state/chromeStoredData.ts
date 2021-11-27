@@ -15,13 +15,13 @@ enum SyncStorageKeys {
   ACTIVE_GAMEPAD_CONFIG = 'ACTIVE_GP_CONF',
 }
 
-export function updateGameName(gameName: string) {
+export function updateGameName(gameName: string | null) {
   return chrome.storage.local.set({ [LocalStorageKeys.GAME_NAME]: gameName });
 }
 
-export async function getGameName(): Promise<string | undefined> {
+export async function getGameName(): Promise<string | null> {
   const keys = await chrome.storage.local.get(LocalStorageKeys.GAME_NAME);
-  return keys[LocalStorageKeys.GAME_NAME];
+  return keys[LocalStorageKeys.GAME_NAME] || null;
 }
 
 /**

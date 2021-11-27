@@ -1,6 +1,7 @@
-import { CodeMap, DEFAULT_SENSITIVITY, isButtonMapping } from '../shared/gamepadConfig';
+import { CodeMap, DEFAULT_SENSITIVITY, isButtonMapping, processGamepadConfig } from '../shared/gamepadConfig';
 import { createClickElement, firstClickText, secondClickText } from './dom/clickToEnableMouse';
 import {
+  enableSimulator,
   fakeController,
   simulateAxeDirPress,
   simulateAxeDirUnpress,
@@ -9,7 +10,7 @@ import {
   simulateBtnUnpress,
   simulateGamepadDisconnect,
 } from './gamepadSimulator';
-import { Direction, StickNum } from '../shared/types';
+import { Direction, GamepadConfig, StickNum } from '../shared/types';
 
 const listeners = {
   keydown: null as null | EventListener,
@@ -31,7 +32,7 @@ const mouseLockError = () => {
   }
 };
 
-export function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
+function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITIVITY) {
   console.log('Listening to mouse', axe);
   let stopMovingTimer: any;
   let needRaf = true; // used for requestAnimationFrame to only trigger at 60fps
@@ -103,7 +104,7 @@ export function listenMouseMove(axe: StickNum = 1, sensitivity = DEFAULT_SENSITI
   });
 }
 
-export function listenKeyboard(codeMapping: Record<string, CodeMap>) {
+function listenKeyboard(codeMapping: Record<string, CodeMap>) {
   console.log('Listening to keyboard');
   const handleKeyEvent = (
     code: string,
@@ -156,7 +157,7 @@ export function listenKeyboard(codeMapping: Record<string, CodeMap>) {
   }
 }
 
-export function unlistenKeyboard() {
+function unlistenKeyboard() {
   if (listeners.keydown) {
     document.removeEventListener('keydown', listeners.keydown);
   }
@@ -172,19 +173,36 @@ export function unlistenKeyboard() {
   }
 }
 
-export function unlistenMouseMove() {
+function unlistenMouseMove() {
   document.exitPointerLock();
   listeners.clickElement?.remove();
 }
 
-export function unlistenAll() {
+function unlistenAll() {
   unlistenKeyboard();
   unlistenMouseMove();
 }
 
-export function destroy() {
+export function enableConfig(config: GamepadConfig) {
+  const { mouseConfig, keyConfig } = config;
+  const { codeMapping, invalidButtons, hasErrors } = processGamepadConfig(keyConfig);
+  if (hasErrors) {
+    // This should have been handled in the Popup UI, but just in case, we print error
+    // and still proceed with the part of the config that is valid
+    console.error('Invalid button mappings in gamepad config object', invalidButtons);
+  }
+  unlistenAll();
+  listenKeyboard(codeMapping);
+  if (mouseConfig.mouseControls !== undefined) {
+    listenMouseMove(mouseConfig.mouseControls, mouseConfig.sensitivity);
+  }
+  enableSimulator(true);
+}
+
+export function disableConfig() {
+  unlistenAll();
   if (fakeController.connected) {
     simulateGamepadDisconnect();
   }
-  unlistenAll();
+  enableSimulator(false);
 }

@@ -1,9 +1,8 @@
-import { listenKeyboard, listenMouseMove, unlistenAll, destroy } from './browser/browserEventProcessor';
-import { simulateGamepadConnect, modifyGamepadGlobals, resetGamepadGlobals } from './browser/gamepadSimulator';
-import { GamepadConfig } from './shared/types';
-import { processGamepadConfig } from './shared/gamepadConfig';
-import { intializedMsg, Message, MessageTypes } from './shared/messages';
+import { disableConfig, enableConfig } from './browser/browserEventProcessor';
 import { showToast } from './browser/dom/snackbar';
+import { modifyGamepadGlobals } from './browser/gamepadSimulator';
+import { intializedMsg, Message, MessageTypes } from './shared/messages';
+import { GamepadConfig } from './shared/types';
 
 /*
  * This script is injected and run inside the browser page itself and thus
@@ -11,38 +10,27 @@ import { showToast } from './browser/dom/snackbar';
  * It uses window.postMessage to communicate with the content_script.
  */
 
-const win = modifyGamepadGlobals();
+modifyGamepadGlobals();
 
 function postMessageToWindow(msg: any) {
-  win.postMessage({ ...msg, source: 'xcloud-page' });
+  window.postMessage({ ...msg, source: 'xcloud-page' });
 }
 
 function handleDisableGamepad() {
   // Disable the fake gamepad and let them use their real gamepad
-  // User may likely just need to refresh the page as well in this case...
   console.log('handleDisableGamepad');
   showToast('Mouse/keyboard disabled');
-  destroy();
-  resetGamepadGlobals();
+  disableConfig();
 }
 
 function handleGamepadConfigUpdate(name: string, config: GamepadConfig) {
   const { mouseConfig, keyConfig } = config;
   console.log('handleGamepadConfigUpdate', name, mouseConfig, keyConfig);
   showToast(`'${name}' preset activated`);
-  const { codeMapping, invalidButtons, hasErrors } = processGamepadConfig(keyConfig);
-  if (hasErrors) {
-    // This should have been handled in the Popup UI, but just in case
-    console.error('Invalid button mappings in gamepad config object', invalidButtons);
-  }
-  unlistenAll();
-  listenKeyboard(codeMapping);
-  if (mouseConfig.mouseControls !== undefined) {
-    listenMouseMove(mouseConfig.mouseControls, mouseConfig.sensitivity);
-  }
+  enableConfig(config);
 }
 
-function connectToExtension(gameName?: string) {
+function connectToExtension(gameName: string | null) {
   console.log('setting up connection to content script via postMessage');
   postMessageToWindow(intializedMsg(gameName));
 
@@ -62,13 +50,14 @@ function connectToExtension(gameName?: string) {
   });
 }
 
-function getGameNameFromXboxPage() {
-  let gameName = undefined;
+function getGameNameFromXboxPage(): string | null {
+  let gameName: string | null = null;
+  // e.g. "Halo Infinite | Xbox Cloud Gaming (Beta) on Xbox.com"
   const titleSplit = document.title.split(/\s+\|/);
   if (titleSplit.length === 2) {
     gameName = titleSplit[0];
   }
-  return gameName;
+  return gameName || null;
 }
 
 function initializeIfReady() {
@@ -76,11 +65,9 @@ function initializeIfReady() {
   const h1 = document.querySelector('h1');
   const streamDiv = document.getElementById('game-stream');
   const isXbox = window.location.href.indexOf('xbox.com') !== -1;
-  // e.g. "Halo Infinite | Xbox Cloud Gaming (Beta) on Xbox.com"
-  const gameName = isXbox ? getGameNameFromXboxPage() : undefined;
+  const gameName = isXbox ? getGameNameFromXboxPage() : null;
 
   if (!isXbox || (!h1 && streamDiv)) {
-    simulateGamepadConnect();
     connectToExtension(gameName);
     return true;
   }
@@ -100,6 +87,6 @@ function onLoad() {
 
 // We need to use 'pageshow' here instead of 'load' because the 'load' event
 // doesn't always trigger if the page is cached (e.g. pressing the back button)
-win.addEventListener('pageshow', onLoad, false);
+window.addEventListener('pageshow', onLoad, false);
 // Not sure yet if this is needed:
 // win.addEventListener('popstate', onLoad, false);

@@ -37,7 +37,7 @@ export const activateGamepadConfigAction = createAsyncThunk(
   ({ name }: { name: string }, { getState }) => _setActiveConfig(name, getState()),
 );
 
-export const disableGamepadConfigAction = createAsyncThunk('config/disable', () => async () => {
+export const disableGamepadConfigAction = createAsyncThunk('config/disable', async () => {
   sendMessage(disableGamepadMsg());
   await storeActiveGamepadConfig(null);
 });

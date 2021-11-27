@@ -17,16 +17,14 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
   }
 });
 
-console.log('listening...');
+console.log('Listening...');
 chrome.runtime.onMessage.addListener((msg: Message, sender, sendResponse) => {
   // Receives messages from the content_script
   if (!sender.tab) return false;
   console.log('Connected external');
   if (msg.type === MessageTypes.INITIALIZED) {
     chrome.action.enable(sender.tab.id!);
-    if (msg.gameName) {
-      updateGameName(msg.gameName);
-    }
+    updateGameName(msg.gameName);
     console.log('sending config back');
     // Send any currently-active config
     getAllStoredSync().then(({ activeConfig, configs }) => {

@@ -43,7 +43,7 @@ function GamepadConfigSelector({
     setCurrentConfig(configsArray[((i % n) + n) % n]);
   };
   const arrowCssClasses = classnames(onlyOneConfig && 'not-allowed-cursor');
-  const rootCssClasses = classnames('horizontal centered', !isNew && 'space-between', className);
+  const rootCssClasses = classnames('config-selector horizontal centered', !isNew && 'space-between', className);
   return isNew ? (
     <div className={rootCssClasses}>
       <ConfigTitle name={currentConfig} status="New" />
