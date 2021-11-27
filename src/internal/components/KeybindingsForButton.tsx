@@ -6,7 +6,7 @@ import { KeyMap } from '../../shared/types';
 import { camelToSpace } from '../utils/formattingUtils';
 import { ExclamationCircle } from './icons';
 
-const MAX_BINDINGS = 2;
+const MAX_BINDINGS = 2; // TODO do people want/need tripple keybinds?
 
 interface TrippleKeybindProps {
   button: string;
@@ -71,10 +71,10 @@ function KeybindingsForButton({ button, value, onChange, readOnly, error, useSpa
   };
 
   const showNoneMessage = !codes.length && readOnly;
-  const showAddBtn = !readOnly && codes.length < MAX_BINDINGS;
-  const maxSpacers = showAddBtn ? MAX_BINDINGS - 1 : MAX_BINDINGS;
-  const spacers: string[] =
-    !useSpacers || codes.length >= maxSpacers || showNoneMessage ? [] : new Array(maxSpacers - codes.length).fill(' ');
+  const canAddMore = codes.length < MAX_BINDINGS;
+  const showAddBtn = !readOnly && canAddMore;
+  const numSpacers = readOnly || codes.length >= MAX_BINDINGS - 1 ? 0 : 1;
+  const spacers: string[] = !useSpacers || showNoneMessage ? [] : new Array(numSpacers).fill(' ');
   const modal = (
     <Modal
       center
