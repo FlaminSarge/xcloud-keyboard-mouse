@@ -59,7 +59,7 @@ Or at least you *were*...
 
 This extension works by acting as a **"virtual" controller**. It listens for keyboard presses and (optionally) mouse movement and translates these into what appear as *controller* button presses and analog stick movements.
 
-There is no added input delay introduced by this extension, as all input is instantly translated into virtual controller input immediately by the extension without any extra software.
+There is no added input delay introduced by this extension - all keyboard/mouse input is instantly translated into virtual controller input immediately by the extension without any extra software or steps.
 
 ## License
 
