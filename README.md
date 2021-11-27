@@ -23,7 +23,7 @@
   All Microsoft, Xbox logos/icons/trademarks are copyright of their respective owners.</sub>
 </p>
 
-***No controller? No problem!***
+***🎮 No controller? No problem!***
 
 Use a keyboard and mouse with [Xbox Cloud Gaming (Project xCloud)](https://xbox.com/play) in your browser.
 
@@ -41,16 +41,16 @@ Or at least you *were*...
 
 <img src = "docs/assets/extension_screenshot1.png" width="400" alt="Screenshot" /> <img src="docs/assets/extension_screenshot2.png" width="400" alt="Screenshot of editing" />
 
-#### Multiple presets
+### ✅ Multiple presets
 
 - Manage multiple preset and custom configurations (e.g. create separate presets for "fighting games", "shooter", etc.)
 - Bind multiple keyboard keys or mouse buttons to any controller button
 
-#### Quick enable/disable
+### ✅ Quick enable/disable
 
 - Easily disable the mouse/keyboard override and switch back to your controller whenever you feel like it with one click of the toggle
 
-#### Configurable sensitivity
+### ✅ Configurable sensitivity
 
 - Control how sensitive you want mouse movement to be on a per-profile basis
 - (Note you may also need to tweak the control sensitivity in the game options as well for optimial use)
