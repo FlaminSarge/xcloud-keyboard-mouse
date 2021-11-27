@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
 
-  "name": "Xbox Cloud Gaming (xCloud) Keyboard & Mouse",
+  "name": "Keyboard & Mouse for Xbox xCloud",
   "short_name": "xCloud KB&M",
-  "description": "No controller? No problem! Use a keyboard and mouse with Xbox Cloud Gaming (Project xCloud) in your browser.",
+  "description": "Play Xbox Cloud Gaming (Project xCloud) with a keyboard and mouse.",
   "version": "1.0",
   "author": "David Idol",
 
@@ -20,7 +20,7 @@
       "32": "icon-32.png"
     },
     "default_popup": "popup.html",
-    "default_title": "xCloud mouse and keyboard"
+    "default_title": "xCloud keyboard and mouse"
   },
 
   "content_scripts": [

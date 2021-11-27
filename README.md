@@ -1,45 +1,71 @@
-# Xbox Cloud Gaming (xCloud) Keyboard & Mouse Chrome Extension
+<p align="center">
+  <a href="https://idolize.github.io/xcloud-keyboard-mouse/"><img src="public/icon-128.png" alt="Logo" .></a>
+</p>
 
-[![CI Status](https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml/badge.svg?event=push&branch=master)](https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml)
-[![License](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://github.com/idolize/xcloud-keyboard-mouse/blob/master/README.md)
+<h1 align="center">Keyboard & Mouse for xCloud</h1>
 
-No controller? No problem!
+<!-- <p align="center">
+  <b>Download:</b>
+  <a href="https://chrome.google.com/webstore/detail/id">Chrome/Chromium</a> |
+  <a href="https://addons.mozilla.org/addon/xloud-keyboard-mouse/?src=external-github">Firefox</a> |
+  <a href="https://github.com/ajayyy/Xloud-keyboard-mouse/wiki/Edge">Edge</a> |
+  <a href="https://github.com/ajayyy/Xloud-keyboard-mouse/wiki/Safari">Safari for MacOS</a> |
+  <a href="https://idolize.github.io/xcloud-keyboard-mouse/">Website</a>
+</p> -->
 
-Use a keyboard and mouse with Xbox Cloud Gaming (Project xCloud) in your browser.
+<p align="center">
+    <a href="https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml"><img src="https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml/badge.svg?event=push&branch=master" alt="CI Status" /></a>
+    <a href="https://github.com/idolize/xcloud-keyboard-mouse/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License GPLv3" /></a>
+</p>
 
-## Prerequisites
+<p align="center">
+  <sub><b>NOTE</b> This is a fan project - it is not affiliated with Microsoft or Xbox in any way.
+  All Microsoft, Xbox logos/icons/trademarks are copyright of their respective owners.</sub>
+</p>
 
-* [node + npm](https://nodejs.org/) (Current Version)
+*No controller? No problem!*
 
-## Setup
+Use a keyboard and mouse with [Xbox Cloud Gaming (Project xCloud)](https://xbox.com/play) in your browser.
 
-```
-npm install
-```
+This is a fan project - it is not affiliated with Microsoft or Xbox in any way.
+All Microsoft, Xbox logos/icons/trademarks are copyright of their respective owners.
 
-## Build
+## The issue with xCloud
 
-```
-npm run build
-```
+Microsoft's cloud gaming service [Xbox Cloud Gaming (aka Project xCloud)](https://xbox.com/play) lets you play your favorite Xbox games in the cloud, but it runs on phsyical Xbox consoles (not PCs) behind the scenes.
 
-## Build in watch mode
+Since not many games on Xbox consoles support mouse and keyboard as first-class input devices, Microsoft chose to limit xCloud users to only using gamepad controllers to play.
 
-### terminal
+So, if you don't have a controller or just prefer to use a mouse and keyboard you are out of luck!
 
-```
-npm run watch
-```
+Or at least you *were*...
 
-### Visual Studio Code
+## Features
 
-Run watch mode.
+<img src = "docs/assets/extension_screenshot1.png" /> <img src="docs/assets/extension_screenshot2.png" />
+![Screenshot of viewing](docs/assets/extension_screenshot1.png)
+![Screenshot of editing]()
 
-type `Ctrl + Shift + B`
+#### Multiple presets
 
-## Load extension to Chrome
+- Manage multiple preset and custom configurations (e.g. create separate presets for "fighting games", "shooter", etc.)
+- Bind multiple keyboard keys or mouse buttons to any controller button
 
-Load `dist` directory
+#### Quick enable/disable
 
-## Test
-`npx jest` or `npm run test`
+- Easily disable the mouse/keyboard override and switch back to your controller whenever you feel like it with one click of the toggle
+
+#### Configurable sensitivity
+
+- Control how sensitive you want mouse movement to be on a per-profile basis
+- (Note you may also need to tweak the control sensitivity in the game options as well for optimial use)
+
+## How it works
+
+This extension works by acting as a **"virtual" controller**. It listens for keyboard presses and (optionally) mouse movement and translates these into what appear as *controller* button presses and analog stick movements.
+
+There is no added input delay introduced by this extension, as all input is instantly translated into virtual controller input immediately by the extension without any extra software.
+
+## License
+
+[GPLv3](https://github.com/idolize/xcloud-keyboard-mouse/blob/master/LICENSE.txt).
