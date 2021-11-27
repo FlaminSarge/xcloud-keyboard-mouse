@@ -15,6 +15,9 @@ chrome.runtime.onInstalled.addListener(({ reason }) => {
     // First time install - enable the default gamepad config
     storeActiveGamepadConfig(DEFAULT_CONFIG_NAME);
   }
+  if (typeof chrome.runtime.setUninstallURL === 'function') {
+    chrome.runtime.setUninstallURL('https://3domsoogkm8.typeform.com/to/PNANDJcU');
+  }
 });
 
 chrome.runtime.onMessage.addListener((msg: Message, sender, sendResponse) => {
