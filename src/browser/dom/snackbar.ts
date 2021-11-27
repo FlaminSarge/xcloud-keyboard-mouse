@@ -21,14 +21,14 @@ function getSnackbarDiv() {
 }
 
 export function showToast(message: string) {
+  clearTimeout(timeout);
   const snackbar = getSnackbarDiv();
   // Add the "show" class to DIV
-  snackbar.className = 'show';
+  snackbar.classList.add('show');
   const span = snackbar.querySelector('span')!;
   span.innerText = message;
 
   // After 3 seconds, remove the show class from DIV
-  clearTimeout(timeout);
   timeout = setTimeout(() => {
     snackbar.classList.remove('show');
   }, TOAST_TIME_MS);
