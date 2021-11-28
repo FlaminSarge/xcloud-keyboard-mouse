@@ -72,7 +72,7 @@ Like this extension? Why not [buy me a coffee](https://www.buymeacoffee.com/idol
 
 ## Development and contributing
 
-See [the contribution doc](CONTRIBUTING.md) for more information
+See [the contribution doc](CONTRIBUTING.md) for more information.
 
 ## License
 
