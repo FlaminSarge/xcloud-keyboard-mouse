@@ -42,13 +42,24 @@ header {
   border-bottom: 6px solid var(--theme-lighter);
 }
 
+header a {
+  text-decoration: none;
+}
+
+small {
+  opacity: 0.8;
+}
+
+#root {
+  margin-bottom: 2rem;
+}
+
 main {
   max-width: 700px;
   margin: auto;
   padding-left: 15px;
   padding-right: 15px;
   padding-bottom: 1rem;
-  margin-bottom: 2rem;
 }
 
 h1 {
@@ -77,12 +88,12 @@ a {
   background-color: transparent;
 }
 
-a.standout {
+.standout {
   color: var(--theme-primary);
 }
 
 a.standout:hover {
-  color: var(--theme-tertiary);
+  color: var(--theme-dark);
 }
 
 .title {
@@ -133,4 +144,15 @@ img {
 
 .center-align {
   text-align: center;
+}
+
+footer {
+  color: var(--neutral-tertiaryalt);
+  margin-top: 3em;
+  text-align: center;
+  font-size: 0.7em;
+}
+
+footer>div {
+  margin-top: 0.5em;
 }
