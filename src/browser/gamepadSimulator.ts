@@ -167,6 +167,11 @@ export function modifyGamepadGlobals() {
 
 export function enableSimulator(enable: boolean) {
   useFakeController = enable;
+  if (enable) {
+    simulateGamepadConnect();
+  } else {
+    simulateGamepadDisconnect();
+  }
 }
 
 export function resetGamepadGlobals() {

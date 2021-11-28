@@ -2,13 +2,11 @@ import { CodeMap, DEFAULT_SENSITIVITY, isButtonMapping, processGamepadConfig } f
 import { createClickElement, firstClickText, secondClickText } from './dom/clickToEnableMouse';
 import {
   enableSimulator,
-  fakeController,
   simulateAxeDirPress,
   simulateAxeDirUnpress,
   simulateAxeMove,
   simulateBtnPress,
   simulateBtnUnpress,
-  simulateGamepadDisconnect,
 } from './gamepadSimulator';
 import { Direction, GamepadConfig, StickNum } from '../shared/types';
 
@@ -199,8 +197,5 @@ export function enableConfig(config: GamepadConfig) {
 
 export function disableConfig() {
   unlistenAll();
-  if (fakeController.connected) {
-    simulateGamepadDisconnect();
-  }
   enableSimulator(false);
 }
