@@ -137,8 +137,11 @@ img {
   max-width: 340px;
 }
 
-.download-links > * {
+.download-links>* {
   margin-right: 8px;
+}
+
+.download-links a {
   background-color: transparent;
   text-decoration: none;
 }
