@@ -4,19 +4,19 @@
 
 <h1 align="center">Keyboard & Mouse for xCloud</h1>
 
-<!-- <p align="center">
-  <b>Download:</b>
-  <a href="https://chrome.google.com/webstore/detail/id">Chrome/Chromium</a> |
-  <a href="https://addons.mozilla.org/addon/xloud-keyboard-mouse/?src=external-github">Firefox</a> |
-  <a href="https://github.com/ajayyy/Xloud-keyboard-mouse/wiki/Edge">Edge</a> |
-  <a href="https://github.com/ajayyy/Xloud-keyboard-mouse/wiki/Safari">Safari for MacOS</a> |
-  <a href="https://idolize.github.io/xcloud-keyboard-mouse/">Website</a>
-</p> -->
-
 <p align="center">
     <a href="https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml"><img src="https://github.com/idolize/xcloud-keyboard-mouse/actions/workflows/build.yml/badge.svg?event=push&branch=master" alt="CI Status" /></a>
     <a href="https://github.com/idolize/xcloud-keyboard-mouse/blob/master/LICENSE.txt"><img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License GPLv3" /></a>
 </p>
+
+***
+
+<p align="center">
+<a href="https://chrome.google.com/webstore/detail/keyboard-mouse-for-xbox-x/nmfedkijhhigaikbadoijiolmjjgoimd"><img src="docs/assets/dl_chrome.png" alt="Download for Chrome"></a>
+</p>
+
+***
+
 
 <p align="center">
   <sub><b>NOTE</b> This is a fan project - it is not affiliated with Microsoft or Xbox in any way.
@@ -35,7 +35,7 @@ Since very few games on Xbox consoles support mouse and keyboard as first-class 
 
 So, if you don't have a controller or just prefer to use a mouse and keyboard you are out of luck!
 
-Or at least you *were*...
+But that all changes with this extension!
 
 ## Features
 

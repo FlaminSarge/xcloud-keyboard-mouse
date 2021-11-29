@@ -137,6 +137,12 @@ img {
   max-width: 340px;
 }
 
+.download-links > * {
+  margin-right: 8px;
+  background-color: transparent;
+  text-decoration: none;
+}
+
 .title,
 .container {
   max-width: 600px;
